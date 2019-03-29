@@ -5,8 +5,10 @@
 
 # Report - Deep RL Project: Navigation
 
+This report was organized with reference to [Akhiad Bercovich](https://github.com/akhiadber/banana_dqn/blob/master/REPORT.md)'s report.
+
 ### Implementation Details
-Follow the instructions in `Navigation.ipynb` to get started with training your own agent!  
+Implementation details, including results and the score plot can be found in the `Navigation.ipynb`.  
 
 ### Setup of repository
 Apart from the `README.md` file this repository consists of the following files:
@@ -66,8 +68,9 @@ As seen below, the agent solves the environment after 457 episodes, and achieves
 
 1. Learning from Pixels:
     - Learning from pixels instead of the given states will require a different network architecture (CNN based) and additional training time.
-    - Aside from above, the code implemented here is almost ready for this challange, will only need to change the state space and load the AWS environment with X server (the provided env for Linux depends on X server).
 
-2. Rainbow:
-    - Several improvements to the DQN algorithm (in addition to Double-DQN) have risen over the years.
-    - The [Rainbow paper](https://arxiv.org/abs/1710.02298) combines these ideas, adding some or all of them to this repo would be nice. 
+2. Improvement to DQN algorithm:
+    - Implementing prioritized experience replay instead of random sampling to achieve a better and quicker convergence
+    - Implementing double-DQN to address the issue of Q value overestimation
+
+3. Tuning hyperparameters
