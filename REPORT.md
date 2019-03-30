@@ -1,11 +1,10 @@
 [//]: # (Image References)
 
-[image1]: https://user-images.githubusercontent.com/15965062/44311825-11761100-a3f7-11e8-8412-5d14ee230bf7.png "Algorithm"
+[image1]: https://cdn-images-1.medium.com/max/1600/1*nb61CxDTTAWR1EJnbCl1cA.png "Algorithm"
 [image2]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score.png "Plot of Rewards"
 
 # Report - Deep RL Project: Navigation
 
-This report was organized with reference to [Akhiad Bercovich](https://github.com/akhiadber/banana_dqn/blob/master/REPORT.md)'s report.
 
 ### Implementation Details
 Implementation details, including results and the score plot can be found in the `Navigation.ipynb`.  
@@ -19,18 +18,16 @@ Apart from the `README.md` file this repository consists of the following files:
 1. `checkpoint.pth`: Contains the weights of the successful DQN model.
 
 
-### Learning Algorithm
+### Learning Algorithm: Deep Q-Networks
 
-The agent is trained using the double-DQN algorithm.
+The agent is trained using the [Deep Q-Networks](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf).
 
-References:
-1. [DQN Paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf)
+The Deep Q-Learning algorithm represents the optimal action-value function $q_*$ by a neurl network.
 
-2. [Double-DQN Paper](https://arxiv.org/abs/1509.06461)
-
-3. Algorithm details: 
+1. Algorithm details: 
 
 ![Algorithm][image1]
+
 
 
 4. Short explanation (refer to the papers for further details):
