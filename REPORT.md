@@ -22,20 +22,16 @@ Apart from the `README.md` file this repository consists of the following files:
 
 The agent is trained using the [Deep Q-Networks](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf).
 
-The Deep Q-Learning algorithm represents the optimal action-value function $q_*$ by a neurl network.
+The Deep Q-Learning algorithm represents the optimal action-value function by a neural network, instead of a table. However, reinforcement learning is notoriously unstable when neural networks are used to represent the action values. To stablize the learning, Deep Q-Learning algorithm introduces two structures
+    - experience replay: an allocated fixed-size memeory to store past experience. A random experience sample is drawn each time to break correlation and increase data efficiency
+    - fixed Q-target: an model with identical structure but being updated much slowly or over several episodes. The target network is used to calcualte the TD target.
 
 1. Algorithm details: 
 
 ![Algorithm][image1]
 
-
-
-4. Short explanation (refer to the papers for further details):
-    - DQN: Adding experience replay (to decorrelate the experiences) and fixed target network (using second network that is updated slower then the main neural network) to the original Q learning algorithm.
-
-    - Double-DQN: Using a different network to choose the argmax action from above algorithm (and since we have the fixed target network, we just use that). This is used to somewhat fix the problem of overestimation of Q values in the original DQN algoritm.
     
-5. Hyperparameters used:
+1. Hyperparameters used:
     ```
     BUFFER_SIZE = int(1e5)  # replay buffer size
     BATCH_SIZE = 256        # minibatch size
@@ -67,7 +63,11 @@ As seen below, the agent solves the environment after 457 episodes, and achieves
     - Learning from pixels instead of the given states will require a different network architecture (CNN based) and additional training time.
 
 2. Improvement to DQN algorithm:
-    - Implementing prioritized experience replay instead of random sampling to achieve a better and quicker convergence
-    - Implementing double-DQN to address the issue of Q value overestimation
+    - Implementing [prioritized experience replay](https://arxiv.org/abs/1511.05952) instead of random sampling to achieve a better and quicker convergence;
+    - Implementing [double-DQN](https://arxiv.org/abs/1509.06461) to address the issue of Q value overestimation;
+    - Implementing [dueling-DQN](https://arxiv.org/abs/1511.06581) to estimate the state value function and the advantage function instead of the Quality function. It would be interesting to see if it would lead to a more stable learning.
 
-3. Tuning hyperparameters
+3. Tuning the model and hyperparameters, including
+    - Modifying Model depth and width. Currently the neural network is still relatively shallow and narrow (3 layers with each layer having 64 neurons or below). It would be interesting to see whether a more flexible model would lead to quicker convergence or on the contrary, unstability)
+    - Adding normalization layers, such as batch normalization layers
+    - Tuning the hyperparameters, such as gamma, tau, learning rate.
