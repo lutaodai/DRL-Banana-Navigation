@@ -31,7 +31,7 @@ The Deep Q-Learning algorithm represents the optimal action-value function by a 
 ![Algorithm][image1]
 
     
-1. Hyperparameters used:
+2. Hyperparameters used:
     ```
     BUFFER_SIZE = int(1e5)  # replay buffer size
     BATCH_SIZE = 256        # minibatch size
