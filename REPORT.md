@@ -1,6 +1,6 @@
 [//]: # (Image References)
 
-[image1]: https://cdn-images-1.medium.com/max/1600/1*nb61CxDTTAWR1EJnbCl1cA.png "Algorithm"
+[image1]: https://cdn-images-1.medium.com/max/1600/1*nb61CxDTTAWR1EJnbCl1cA.png=250x "Algorithm"
 [image2]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score.png "Plot of Rewards"
 
 
