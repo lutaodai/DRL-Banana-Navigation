@@ -48,6 +48,7 @@ Apart from the `README.md` file this repository consists of the following files:
 
 ### Todo List
 Algorithm
-- [] Replace ipynb with a py file
+- [ ] Replace ipynb with a py file
 
 Analysis
+- [ ] Improve visualization with seaborn package
