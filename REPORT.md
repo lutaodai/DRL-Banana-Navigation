@@ -29,7 +29,7 @@ The Deep Q-Learning algorithm represents the optimal action-value function by a 
 
 1. Algorithm details: 
 
-![Algorithm][image1]{ width: 200px; } 
+![Algorithm][image1]
 
     
 2. Hyperparameters used:
