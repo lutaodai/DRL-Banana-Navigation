@@ -46,7 +46,8 @@ Apart from the `README.md` file this repository consists of the following files:
 1. `ddpg_agent.py`: Agent and ReplayBuffer classes; The Agent class makes use of the DQN model from `model.py` and the ReplayBuffer class;
 1. `checkpoint.pth`: Contains the weights of the successful DQN model.
 
-### Todo List
+---
+## Todo List
 _Algorithm_
 - [ ] Replace ipynb with a py file
 - [ ] Implement prioritized experience replay
