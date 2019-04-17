@@ -47,8 +47,16 @@ Apart from the `README.md` file this repository consists of the following files:
 1. `checkpoint.pth`: Contains the weights of the successful DQN model.
 
 ### Todo List
-Algorithm
+_Algorithm_
 - [ ] Replace ipynb with a py file
+- [ ] Implement prioritized experience replay
+- [ ] Implement double-DQN
+- [ ] Implement dueling-DQN
 
-Analysis
-- [ ] Improve visualization with seaborn package
+_Analysis_
+- [ ] Improve visualization with `seaborn` package
+- [ ] Provide in-depth discussion on 
+
+_Miscellaneous_
+- [ ] Add a requirement.txt file to the root directory
+- [ ] Control the program with `argparse`
