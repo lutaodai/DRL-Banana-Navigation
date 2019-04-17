@@ -38,7 +38,7 @@ The task is episodic, and in order to solve the environment, your agent must get
 
 Follow the instructions in `Navigation.ipynb` to get started with training your own agent!  
 
-### Setup of repository
+### Setup of Repository
 Apart from the `README.md` file this repository consists of the following files:
 
 1. `Navigation.ipynb`: An ipynb file for training the DQN agent and visualizing the training progress;
@@ -46,3 +46,8 @@ Apart from the `README.md` file this repository consists of the following files:
 1. `ddpg_agent.py`: Agent and ReplayBuffer classes; The Agent class makes use of the DQN model from `model.py` and the ReplayBuffer class;
 1. `checkpoint.pth`: Contains the weights of the successful DQN model.
 
+### Todo List
+Algorithm
+- [] Replace ipynb with a py file
+
+Analysis
