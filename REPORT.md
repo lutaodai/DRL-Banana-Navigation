@@ -1,6 +1,6 @@
 [//]: # (Image References)
 
-[image1]: https://cdn-images-1.medium.com/max/1600/1*nb61CxDTTAWR1EJnbCl1cA.png "Algorithm" | width=100
+[image1]: https://cdn-images-1.medium.com/max/1600/1*nb61CxDTTAWR1EJnbCl1cA.png "Algorithm"
 [image2]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score.png "Plot of Rewards"
 
 # Report - Deep RL Project: Navigation
@@ -28,7 +28,7 @@ The Deep Q-Learning algorithm represents the optimal action-value function by a 
 
 1. Algorithm details: 
 
-![Algorithm][image1]
+![Algorithm | 20%][image1]
 
     
 2. Hyperparameters used:
