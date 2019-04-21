@@ -53,14 +53,14 @@ Apart from the `README.md` file this repository consists of the following files:
 ---
 ## Todo List
 _Algorithm_
-- [ ] Replace ipynb with a py file
+- [x] Replace ipynb with a py file
 - [ ] Implement prioritized experience replay
 - [ ] Implement double-DQN
 - [ ] Implement dueling-DQN
 - [ ] Solve the environment with raw pixels
 
 _Analysis_
-- [ ] Improve visualization with `seaborn` package
+- [x] Improve visualization with `seaborn` package
 - [ ] Provide in-depth discussion on experience replay vs. prioritized experience replay on this setting
 - [ ] Provide in-depth discussion on DQN vs. double-DQN vs. dueling-DQN on this setting
 

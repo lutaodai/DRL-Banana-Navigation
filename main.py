@@ -4,6 +4,10 @@ from dqn_agent import Agent, ReplayBuffer
 from collections import deque, namedtuple
 import torch
 
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
 
 def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
     """Deep Q-Learning.
@@ -47,6 +51,18 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
             break
     return scores
 
+def plot_scores(scores, window_size=15):
+    scores = pd.DataFrame(scores, columns=["scores"])
+    scores = scores.reset_index()
+    scores["scores_avg"] = scores["scores"].rolling(window=window_size).mean()
+    
+    sns.set_style("dark")
+    sns.relplot(x = "index", y = "scores",
+                data=scores, kind="line")
+    plt.plot(scores["index"], scores["scores_avg"], color=sns.xkcd_rgb["amber"])
+    plt.legend(["Scores", "MA(%d)" %window_size])
+    plt.savefig("score_plot.png")
+
 if __name__ == "__main__":
     env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64",
                        worker_id=1, seed=1)
@@ -57,5 +73,9 @@ if __name__ == "__main__":
 
     # initialize an agent
     agent = Agent(state_size=37, action_size=4, seed=1)
-
+    
+    # training a dqn agent
     scores = dqn(n_episodes=3000, max_t=1000)
+    
+    # visualization
+    plot_scores(scores)
