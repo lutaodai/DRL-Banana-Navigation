@@ -42,6 +42,8 @@ The Deep Q-Learning algorithm represents the optimal action-value function by a 
     UPDATE_EVERY = 4        # how often to update the network
     ```
 ### Screen outputs
+
+DQN
 ```
 Episode 100	Average Score: 0.75
 Episode 200	Average Score: 3.66
@@ -50,6 +52,16 @@ Episode 400	Average Score: 9.72
 Episode 500	Average Score: 11.87
 Episode 557	Average Score: 13.02
 Environment solved in 457 episodes!	Average Score: 13.02
+```
+
+Double DQN
+```
+Episode 100     Average Score: 0.421
+Episode 200     Average Score: 4.15
+Episode 300     Average Score: 8.74
+Episode 400     Average Score: 10.58
+Episode 494     Average Score: 13.00
+Environment solved in 394 episodes!     Average Score: 13.00
 ```
 
 ### Plot of results
