@@ -55,7 +55,7 @@ Apart from the `README.md` file this repository consists of the following files:
 _Algorithm_
 - [x] Replace ipynb with a py file
 - [ ] Implement prioritized experience replay
-- [ ] Implement double-DQN
+- [x] Implement double-DQN
 - [ ] Implement dueling-DQN
 - [ ] Solve the environment with raw pixels
 
