@@ -56,11 +56,13 @@ _Algorithm_
 - [x] Replace ipynb with a py file
 - [ ] Implement prioritized experience replay
 - [x] Implement double-DQN
-- [ ] Implement dueling-DQN
+- [x] Implement dueling-DQN
+- [ ] Fine Tune the hyperparameters
 - [ ] Solve the environment with raw pixels
 
 _Analysis_
 - [x] Improve visualization with `seaborn` package
+- [ ] Compare three models using metrics from the Dueling DQN paper and under fair condition
 - [ ] Provide in-depth discussion on experience replay vs. prioritized experience replay on this setting
 - [ ] Provide in-depth discussion on DQN vs. double-DQN vs. dueling-DQN on this setting
 

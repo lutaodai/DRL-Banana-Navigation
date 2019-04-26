@@ -1,7 +1,9 @@
 [//]: # (Image References)
 
 [image1]: https://cdn-images-1.medium.com/max/1600/1*nb61CxDTTAWR1EJnbCl1cA.png "Algorithm"
-[image2]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score.png "Plot of Rewards"
+[image2]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score_plot.png "Plot of DQN"
+[image3]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score_plot_double_dqn.png "Plot of Double DQN"
+[image4]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score_plot_dueling_dqn.png "Plot of Dueling DQN"
 
 
 # Report - Deep RL Project: Navigation
@@ -64,11 +66,23 @@ Episode 494     Average Score: 13.00
 Environment solved in 394 episodes!     Average Score: 13.00
 ```
 
+Dueling DQN
+```
+Episode 100     Average Score: 0.062
+Episode 200     Average Score: 3.06
+Episode 300     Average Score: 8.02
+Episode 400     Average Score: 11.01
+Episode 481     Average Score: 13.03
+Environment solved in 381 episodes!     Average Score: 13.03
+```
+
 ### Plot of results
 
-As seen below, the agent solves the environment after 457 episodes, and achieves best average score of above 13.
+![Plot of DQN][image2]
 
-![Plot of Rewards][image2]
+![Plot of Double DQN][image3]
+
+![Plot of Dueling DQN][image4]
 
 ###  Ideas for future work
 

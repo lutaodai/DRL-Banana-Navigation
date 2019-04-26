@@ -62,7 +62,7 @@ def plot_scores(scores, window_size=15):
     plt.plot(scores["index"], scores["scores_avg"], color=sns.xkcd_rgb["amber"])
     plt.legend(["Scores", "MA(%d)" %window_size])
     # plt.savefig("score_plot.png")
-    plt.savefig("score_plot_double_dqn.png")
+    plt.savefig("score_plot_dueling_dqn.png")
 
 if __name__ == "__main__":
     env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64",
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     brain = env.brains[brain_name]
 
     # initialize an agent
-    agent = Agent(state_size=37, action_size=4, seed=1, double_dqn=True)
+    agent = Agent(state_size=37, action_size=4, seed=1, double_dqn=False, dueling_dqn=True)
     
     # training a dqn agent
     scores = dqn(n_episodes=3000, max_t=1000)

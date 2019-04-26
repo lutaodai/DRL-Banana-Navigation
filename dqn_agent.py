@@ -2,7 +2,7 @@ import numpy as np
 import random
 from collections import namedtuple, deque
 
-from model import QNetwork
+from model import QNetwork, DuelingQNetwork
 
 import torch
 import torch.nn.functional as F
@@ -20,7 +20,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 class Agent():
     """Interacts with and learns from the environment."""
 
-    def __init__(self, state_size, action_size, seed, double_dqn=False):
+    def __init__(self, state_size, action_size, seed, double_dqn=False, dueling_dqn=False):
         """Initialize an Agent object.
         
         Params
@@ -33,12 +33,20 @@ class Agent():
         self.action_size = action_size
         self.seed = random.seed(seed)
         self.double_dqn = double_dqn
+        self.dueling_dqn = dueling_dqn
+        assert self.double_dqn * self.dueling_dqn == 0
         if self.double_dqn:
             print("Implementing Double DQN!")
+        if self.dueling_dqn:
+            print("Implementing Dueling DQN!")
 
         # Q-Network
-        self.qnetwork_local = QNetwork(state_size, action_size, seed).to(device)
-        self.qnetwork_target = QNetwork(state_size, action_size, seed).to(device)
+        if self.dueling_dqn:
+            self.qnetwork_local = DuelingQNetwork(state_size, action_size, seed).to(device)
+            self.qnetwork_target = DuelingQNetwork(state_size, action_size, seed).to(device)
+        else:
+            self.qnetwork_local = QNetwork(state_size, action_size, seed).to(device)
+            self.qnetwork_target = QNetwork(state_size, action_size, seed).to(device)
         self.optimizer = optim.Adam(self.qnetwork_local.parameters(), lr=LR)
 
         # Replay memory
