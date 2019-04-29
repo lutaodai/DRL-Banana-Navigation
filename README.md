@@ -68,7 +68,7 @@ _Analysis_
 
 _Miscellaneous_
 - [ ] Add a requirement.txt file to the root directory
-- [ ] Control the program with `argparse`
+- [x] Control the program with `argparse`
 - [ ] Resize images in markdown files
 - [ ] Add animations showing agents' performance
 - [ ] Improve screen output information

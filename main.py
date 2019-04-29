@@ -1,12 +1,52 @@
-from unityagents import UnityEnvironment
-import numpy as np
-from dqn_agent import Agent, ReplayBuffer
-from collections import deque, namedtuple
-import torch
-
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
+from collections import deque, namedtuple
+import torch
+import argparse
+import os
+
+from unityagents import UnityEnvironment
+from dqn_agent import Agent, ReplayBuffer
+
+def str2bool(v):
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
+
+PARSER = argparse.ArgumentParser(description=None)
+PARSER.add_argument('-dou_dqn', '--double_dqn', default=False, type=str2bool, 
+                    help="specifying if using double dqn")
+PARSER.add_argument('-due_dqn', '--dueling_dqn', default=False, type=str2bool, 
+                    help="specifying if using dueling dqn")
+PARSER.add_argument('-fdir', '--figure_dir', default="figure",
+                    help="directory storing figures")
+PARSER.add_argument('-mdir', '--model_dir', default='model',
+                    help="directory storing models")
+PARSER.add_argument('-ws', '--window_size', default=100, type=int,
+                    help="moving average window for plotting")
+PARSER.add_argument('-bus', '--buffer_size', default=int(1e5), type=int,
+                    help='buffer size for experience replay buffer')
+PARSER.add_argument('-bas', '--batch_size', default=256, type=int,
+                    help='batch size training')
+PARSER.add_argument('-gamma', '--gamma', default=0.99, type=float,
+                    help='discount factor')
+PARSER.add_argument('-tau', '--tau', default=1e-3, type=float,
+                    help='factor for soft update of target parameters')
+PARSER.add_argument('-lr', '--lr', default=5e-4, type=float,
+                    help='learning rate')
+PARSER.add_argument('-uf', '--update_frequency', default=4, type=int,
+                    help='how often to update the network')
+ARGS = PARSER.parse_args()
+print(ARGS)
+
+if not os.path.exists(ARGS.figure_dir): os.makedirs(ARGS.figure_dir)
+if not os.path.exists(ARGS.model_dir): os.makedirs(ARGS.model_dir)
 
 
 def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
@@ -47,7 +87,7 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window)>=13.0:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, np.mean(scores_window)))
-            torch.save(agent.qnetwork_local.state_dict(), 'checkpoint.pth')
+            torch.save(agent.qnetwork_local.state_dict(), os.path.join(ARGS.model_dir, 'checkpoint.pth'))
             break
     return scores
 
@@ -61,10 +101,16 @@ def plot_scores(scores, window_size=15):
                 data=scores, kind="line")
     plt.plot(scores["index"], scores["scores_avg"], color=sns.xkcd_rgb["amber"])
     plt.legend(["Scores", "MA(%d)" %window_size])
-    # plt.savefig("score_plot.png")
-    plt.savefig("score_plot_dueling_dqn.png")
+    
+    if ARGS.double_dqn:
+        plt.savefig(os.path.join(ARGS.figure_dir, "score_plot_double_dqn.png"))
+    elif ARGS.dueling_dqn:
+        plt.savefig(os.path.join(ARGS.figure_dir, "score_plot_dueling_dqn.png"))
+    else:
+        plt.savefig(os.path.join(ARGS.figure_dir, "score_plot_dqn.png"))
+    
 
-if __name__ == "__main__":
+if __name__ == "__main__":    
     env = UnityEnvironment(file_name="Banana_Linux_NoVis/Banana.x86_64",
                        worker_id=1, seed=1)
 
@@ -73,10 +119,10 @@ if __name__ == "__main__":
     brain = env.brains[brain_name]
 
     # initialize an agent
-    agent = Agent(state_size=37, action_size=4, seed=1, double_dqn=False, dueling_dqn=True)
+    agent = Agent(state_size=37, action_size=4, seed=1, args=ARGS)
     
     # training a dqn agent
     scores = dqn(n_episodes=3000, max_t=1000)
     
     # visualization
-    plot_scores(scores)
+    plot_scores(scores, window_size=ARGS.window_size)
