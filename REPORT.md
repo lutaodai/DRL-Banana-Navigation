@@ -1,9 +1,9 @@
 [//]: # (Image References)
 
 [image1]: https://cdn-images-1.medium.com/max/1600/1*nb61CxDTTAWR1EJnbCl1cA.png "Algorithm"
-[image2]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score_plot.png "Plot of DQN"
-[image3]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score_plot_double_dqn.png "Plot of Double DQN"
-[image4]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/score_plot_dueling_dqn.png "Plot of Dueling DQN"
+[image2]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/figure/score_plot.png "Plot of DQN"
+[image3]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/figure/score_plot_double_dqn.png "Plot of Double DQN"
+[image4]: https://raw.githubusercontent.com/lutaodai/DRL-Banana-Navigation/master/figure/score_plot_dueling_dqn.png "Plot of Dueling DQN"
 
 
 # Report - Deep RL Project: Navigation
