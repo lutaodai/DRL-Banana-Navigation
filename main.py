@@ -87,7 +87,13 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
         if np.mean(scores_window)>=13.0:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode-100, np.mean(scores_window)))
-            torch.save(agent.qnetwork_local.state_dict(), os.path.join(ARGS.model_dir, 'checkpoint.pth'))
+            
+            if ARGS.double_dqn:
+                torch.save(agent.qnetwork_local.state_dict(), os.path.join(ARGS.model_dir, 'model_double_dqn.pth'))
+            elif ARGS.dueling_dqn:
+                torch.save(agent.qnetwork_local.state_dict(), os.path.join(ARGS.model_dir, 'model_dueling_dqn.pth'))
+            else:
+                torch.save(agent.qnetwork_local.state_dict(), os.path.join(ARGS.model_dir, 'model_dqn.pth'))
             break
     return scores
 
